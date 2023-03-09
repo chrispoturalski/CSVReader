@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <input type="file" id="uploadfile" accept=".csv">
+    <button id="uploadconfirm">Upload File</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+
+    <script>
+        const nameData = [];
+        const stageData = [];
+        const addressData = [];
+        const uploadconfirm = document.getElementById('uploadconfirm').
+        addEventListener('click', () => {
+            Papa.parse(document.getElementById('uploadfile').files[0],
+            {
+                header: true,
+                download: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    // console.log(results.data[0].Address);
+                    for (i = 0; i < results.data.length; i++) {
+                        nameData.push(results.data[i].Name);
+                        stageData.push(results.data[i].Stage);
+                        addressData.push(results.data[i].Address);
+                    }
+                    console.log(nameData);
+                    console.log(stageData);
+                    console.log(addressData);
+
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
