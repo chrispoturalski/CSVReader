@@ -13,6 +13,8 @@
         const nameData = [];
         const stageData = [];
         const addressData = [];
+        const latData = [];
+        const lngData = [];
         const uploadconfirm = document.getElementById('uploadconfirm').
         addEventListener('click', () => {
             Papa.parse(document.getElementById('uploadfile').files[0],
@@ -25,11 +27,11 @@
                     for (i = 0; i < results.data.length; i++) {
                         nameData.push(results.data[i].Name);
                         stageData.push(results.data[i].Stage);
-                        addressData.push(results.data[i].Address);
+                        addressData.push(results.data[i].Address)
+                        latData.push(results.data[i].Latitude);
+                        lngData.push(results.data[i].Longitude);
                     }
-                    console.log(nameData);
-                    console.log(stageData);
-                    console.log(addressData);
+                    console.log(results);
 
                 }
             })
